@@ -16,10 +16,10 @@
  *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-#include "exfat_config.h"
-#include "exfat_global.h"
+#include "include/exfat_config.h"
+#include "include/exfat_global.h"
 
-#include "exfat_nls.h"
+#include "include/exfat_nls.h"
 
 UINT8 uni_upcase[NUM_UPCASE<<1] = {
 	0x00, 0x00, 0x01, 0x00, 0x02, 0x00, 0x03, 0x00, 0x04, 0x00, 0x05, 0x00, 0x06, 0x00, 0x07, 0x00,

@@ -28,10 +28,10 @@
 #include <linux/semaphore.h>
 #include <linux/time.h>
 
-#include "exfat_config.h"
-#include "exfat_global.h"
-#include "exfat_api.h"
-#include "exfat_oal.h"
+#include "include/exfat_config.h"
+#include "include/exfat_global.h"
+#include "include/exfat_api.h"
+#include "include/exfat_oal.h"
 
 DECLARE_MUTEX(z_sem);
 

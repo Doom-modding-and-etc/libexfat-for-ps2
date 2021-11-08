@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "deh_main.h": "c",
+        "string_view": "c",
+        "exfat_version.h": "c",
+        "exfat_config.h": "c",
+        "exfat_global.h": "c",
+        "exfat_data.h": "c"
+    }
+}

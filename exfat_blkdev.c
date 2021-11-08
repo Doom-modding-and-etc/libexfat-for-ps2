@@ -18,12 +18,12 @@
 
 #include <linux/blkdev.h>
 
-#include "exfat_config.h"
-#include "exfat_global.h"
-#include "exfat_blkdev.h"
-#include "exfat_data.h"
-#include "exfat_api.h"
-#include "exfat_super.h"
+#include "include/exfat_config.h"
+#include "include/exfat_global.h"
+#include "include/exfat_blkdev.h"
+#include "include/exfat_data.h"
+#include "include/exfat_api.h"
+#include "include/exfat_super.h"
 
 INT32 bdev_init(void)
 {

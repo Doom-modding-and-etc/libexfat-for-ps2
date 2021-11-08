@@ -16,16 +16,16 @@
  *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-#include "exfat_config.h"
-#include "exfat_global.h"
-#include "exfat_data.h"
-#include "exfat_oal.h"
+#include "include/exfat_config.h"
+#include "include/exfat_global.h"
+#include "include/exfat_data.h"
+#include "include/exfat_oal.h"
 
-#include "exfat_blkdev.h"
-#include "exfat_cache.h"
-#include "exfat_nls.h"
-#include "exfat_super.h"
-#include "exfat.h"
+#include "include/exfat_blkdev.h"
+#include "include/exfat_cache.h"
+#include "include/exfat_nls.h"
+#include "include/exfat_super.h"
+#include "include/exfat.h"
 
 FS_STRUCT_T fs_struct[MAX_DRIVE];
 
