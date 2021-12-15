@@ -21,15 +21,15 @@
 #	51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-IOP_CFLAGS += -Wall -Os -I. -I../include -I../include/exfat
+IOP_CFLAGS += -Wall -Os -I. -I../include -I../include
 
-EE_CFLAGS += -Wall -Os -I. -I../include -I../include/exfat
+#EE_CFLAGS += -Wall -Os -I. -I../include -I../include/exfat
 
 IOP_LIB = libexfat.a
 IOP_OBJS = mount.o
 
 EE_LIB = libexfat.a 
-EE_OBJS = cluster.o
+EE_OBJS = EE/mount.o
 
 IOP: $(IOP_LIB) 
 ifeq ($(PS2DEV),)
@@ -37,8 +37,7 @@ ifeq ($(PS2DEV),)
 	@exit 1
 endif
 	@echo Copying...
-	@mkdir -p $(PS2SDK)/iop/include/exfat
-	@cp -frv *.h $(PS2SDK)/iop/include/exfat
+	@cp -frv include/exfat.h $(PS2SDK)/iop/include/
 	@cp -f $(IOP_LIB) $(PS2SDK)/iop/lib
 	@echo Done!
 
@@ -48,8 +47,7 @@ ifeq ($(PS2DEV),)
 	@exit 1
 endif
 	@echo Copying...
-	@mkdir -p $(PS2SDK)/ee/include/exfat
-	@cp -frv *.h $(PS2SDK)/ee/include/exfat
+	@cp -frv include/exfat.h $(PS2SDK)/ee/include
 	@cp -f $(EE_LIB) $(PS2SDK)/ee/lib
 	@echo Done!
 
