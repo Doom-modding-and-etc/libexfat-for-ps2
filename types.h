@@ -3,6 +3,11 @@
 #define _STRUCT_TIMESPEC 1
 
 typedef long __time_t;
+typedef unsigned int time_t;
+typedef unsigned int off_t;
+typedef unsigned short ssize_t;
+typedef unsigned int gid_t;
+typedef unsigned int uid_t;
 /* POSIX.1b structure for a time value.  This is like a `struct timeval' but
    has nanoseconds instead of microseconds.  */
 struct timespec
@@ -24,9 +29,3 @@ struct timespec
 };
 
 #endif
-
-typedef unsigned int time_t;
-typedef unsigned int off_t;
-typedef unsigned short ssize_t;
-typedef unsigned int gid_t;
-typedef unsigned int uid_t;
