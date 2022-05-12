@@ -21,7 +21,7 @@
 	51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 */
 
-
+#ifndef PLATFORM_H_INCLUDED
 #define PLATFORM_H_INCLUDED
 
 #if defined(__linux__) || defined(__GLIBC__) || defined(__GNU__)
@@ -66,5 +66,8 @@
 #define EXFAT_LITTLE_ENDIAN __LITTLE_ENDIAN
 #define EXFAT_BIG_ENDIAN __BIG_ENDIAN
 
+#else 
+#error Unknown platform
+#endif
 
 #endif /* ifndef PLATFORM_H_INCLUDED */

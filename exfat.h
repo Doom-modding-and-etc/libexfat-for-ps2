@@ -24,15 +24,18 @@
 #ifndef EXFAT_H_INCLUDED
 #define EXFAT_H_INCLUDED
 
+#ifndef ANDROID
+/* Android.bp is used instead of autotools when targeting Android */
+#include "config.h"
+#endif
 #include "compiler.h"
 #include "exfatfs.h"
 #include <stdio.h>
-#include <stddef.h>
-//#include <time.h>
+#include <stdlib.h>
+#include <time.h>
 #include <stdbool.h>
-//#include <sys/stat.h>
-///#include <sys/types.h>
-#include "types.h"
+#include <sys/stat.h>
+#include <sys/types.h>
 
 #define EXFAT_NAME_MAX 255
 /* UTF-16 encodes code points up to U+FFFF as single 16-bit code units.

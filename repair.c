@@ -21,8 +21,8 @@
 */
 
 #include "exfat.h"
-#include <stddef.h>
-#include <stdio.h>
+#include <strings.h>
+
 int exfat_errors_fixed;
 
 bool exfat_ask_to_fix(const struct exfat* ef)

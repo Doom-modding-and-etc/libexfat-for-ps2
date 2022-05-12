@@ -57,13 +57,13 @@
 
 #endif
 
-//#ifdef USE_C11_STATIC_ASSERT
-//#define STATIC_ASSERT(cond) _Static_assert(cond, #cond)
-//#else
+#ifdef USE_C11_STATIC_ASSERT
+#define STATIC_ASSERT(cond) _Static_assert(cond, #cond)
+#else
 #define CONCAT2(a, b) a ## b
 #define CONCAT1(a, b) CONCAT2(a, b)
 #define STATIC_ASSERT(cond) \
-//	extern void CONCAT1(static_assert, __LINE__)(int x[(cond) ? 1 : -1])
+	extern void CONCAT1(static_assert, __LINE__)(int x[(cond) ? 1 : -1])
 #endif
 
-//#endif /* ifndef COMPILER_H_INCLUDED */
+#endif /* ifndef COMPILER_H_INCLUDED */

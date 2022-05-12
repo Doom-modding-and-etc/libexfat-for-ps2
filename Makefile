@@ -5,7 +5,7 @@
 #
 #	Free exFAT implementation.
 #	Copyright (C) 2010-2018  Andrew Nayenko
-#   Copyright (C) 2021 André Guilherme
+#       Copyright (C) 2021-2022 André Guilherme
 #	This program is free software; you can redistribute it and/or modify
 #	it under the terms of the GNU General Public License as published by
 #	the Free Software Foundation, either version 2 of the License, or
@@ -21,25 +21,11 @@
 #	51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-IOP_CFLAGS += -Wall -Os -I. -I../include -I../include
-
-#EE_CFLAGS += -Wall -Os -I. -I../include -I../include/exfat
-
-IOP_LIB = libexfat.a
-IOP_OBJS = mount.o
+EE_CFLAGS += -Wall -Os -I. -I../include -I../include/exfat
 
 EE_LIB = libexfat.a 
-EE_OBJS = EE/mount.o
 
-IOP: $(IOP_LIB) 
-ifeq ($(PS2DEV),)
-	@echo "$PS2DEV ENVIROMENT is not set. Could not install libexfat."
-	@exit 1
-endif
-	@echo Copying...
-	@cp -frv include/exfat.h $(PS2SDK)/iop/include/
-	@cp -f $(IOP_LIB) $(PS2SDK)/iop/lib
-	@echo Done!
+EE_OBJS = mount.o
 
 EE: $(EE_LIB) 
 ifeq ($(PS2DEV),)
@@ -52,12 +38,10 @@ endif
 	@echo Done!
 
 clean:
-	@rm -f -r $(IOP_LIB) $(IOP_OBJS) 
-	@rm -f -r $(EE_LIB) $(EE_DIR) 
+	@rm -f -r $(EE_LIB) $(EE_OBJS) 
 
-install: IOP EE clean
+install: EE clean
 
 include $(PS2SDK)/Defs.make
 include $(PS2SDK)/samples/Makefile.pref
-include $(PS2SDK)/samples/Makefile.iopglobal
 include $(PS2SDK)/samples/Makefile.eeglobal

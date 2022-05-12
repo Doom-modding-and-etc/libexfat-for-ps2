@@ -22,15 +22,11 @@
 
 #include "exfat.h"
 #include <string.h>
-#include <stddef.h>
+#include <stdlib.h>
 #include <errno.h>
-//#include <inttypes.h>
-//#include <unistd.h>
-//#include <sys/types.h>
-#include "types.h"
-#  define __PRI64_PREFIX	"l"
-# define PRIdFAST64	__PRI64_PREFIX "d"
-# define PRIu64		__PRI64_PREFIX "u"
+#include <inttypes.h>
+#include <unistd.h>
+#include <sys/types.h>
 
 static uint64_t rootdir_size(const struct exfat* ef)
 {
