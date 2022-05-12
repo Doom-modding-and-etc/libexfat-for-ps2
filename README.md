@@ -1,36 +1,33 @@
 About
 -----
-
-This project aims to provide a full-featured [exFAT][1] file system implementation for Unix-like systems. It consists of a [FUSE][2] module (fuse-exfat) and a set of utilities (exfat-utils).
+This port aims to provide a full-featured [exFAT](https://en.wikipedia.org/wiki/ExFAT) file system implementation for Sony Playstation 2. It only consists a library that provides mounting and unmounting exFat drivers.
 
 Supported operating systems:
-
 * GNU/Linux
 * Mac OS X 10.5 or later
 * FreeBSD
-
-Most GNU/Linux distributions already have fuse-exfat and exfat-utils in their repositories, so you can just install and use them. The next chapter describes how to compile them from source.
+* Playstation 2
 
 Compiling
 ---------
 
-To build this project on GNU/Linux you need to install the following packages:
+To build this library on GNU/Linux you need to install the following packages:
 
-* [git][4]
-* [autoconf][5]
-* [automake][6]
-* [pkg-config][7]
+* [git](https://www.git-scm.com/)
+* [autoconf](https://www.gnu.org/software/autoconf/)
+* [automake](https://www.gnu.org/software/automake/)
+* [pkg-config](http://www.freedesktop.org/wiki/Software/pkg-config/)
 * fuse-devel (or libfuse-dev)
-* [gcc][8]
-* [make][9]
+* [gcc](https://gcc.gnu.org/)
+* [make](https://www.gnu.org/software/make/)
 
 On Mac OS X:
 
 * autoconf
 * automake
 * pkg-config
-* [OSXFUSE][10]
-* [Xcode][11] (legacy versions include autotools but their versions are too old)
+* [OSXFUSE](https://osxfuse.github.io/)
+* [Xcode](https://en.wikipedia.org/wiki/Xcode) (legacy versions include autotools but their versions are too old)
 
 On OpenBSD:
 
@@ -39,45 +36,16 @@ On OpenBSD:
 * automake (set AUTOMAKE_VERSION environment variable)
 
 Get the source code, change directory and compile:
-
-    git clone https://github.com/relan/exfat.git
-    cd exfat
-    autoreconf --install
-    ./configure
-    make
-
-Then install driver and utilities (from root):
-
-    make install
-
-You can remove them using this command (from root):
-
-    make uninstall
-
-Mounting
---------
-
-Modern GNU/Linux distributions (with [util-linux][12] 2.18 or later) will mount exFAT volumes automatically. Anyway, you can mount manually (from root):
-
-    mount.exfat-fuse /dev/spec /mnt/exfat
-
-where /dev/spec is the [device file][13], /mnt/exfat is a mountpoint.
+ git clone https://github.com/Doom-modding-and-etc/libexfat-for-ps2.git
+ cd libexfat-for-ps2 
+ make install
 
 Feedback
 --------
 
-If you have any questions, issues, suggestions, bug reports, etc. please create an [issue][3]. Pull requests are also welcome!
+If you have any questions, issues, suggestions, bug reports, etc. please create an [issue][https://github.com/Doom-modding-and-etc/libexfat-for-ps2/issues]. Pull requests are also very welcome!
 
-[1]: https://en.wikipedia.org/wiki/ExFAT
-[2]: https://en.wikipedia.org/wiki/Filesystem_in_Userspace
-[3]: https://github.com/relan/exfat/issues
-[4]: https://www.git-scm.com/
-[5]: https://www.gnu.org/software/autoconf/
-[6]: https://www.gnu.org/software/automake/
-[7]: http://www.freedesktop.org/wiki/Software/pkg-config/
-[8]: https://gcc.gnu.org/
-[9]: https://www.gnu.org/software/make/
-[10]: https://osxfuse.github.io/
-[11]: https://en.wikipedia.org/wiki/Xcode
-[12]: https://www.kernel.org/pub/linux/utils/util-linux/
-[13]: https://en.wikipedia.org/wiki/Device_file
+# Todo-list:
+- Support bdm and hdd
+- Fix some compiler warnings
+- Fix the library itself

@@ -5,7 +5,7 @@
 #
 #	Free exFAT implementation.
 #	Copyright (C) 2010-2018  Andrew Nayenko
-#       Copyright (C) 2021-2022 André Guilherme
+#   Copyright (C) 2021-2022 André Guilherme
 #	This program is free software; you can redistribute it and/or modify
 #	it under the terms of the GNU General Public License as published by
 #	the Free Software Foundation, either version 2 of the License, or
@@ -13,7 +13,7 @@
 #
 #	This program is distributed in the hope that it will be useful,
 #	but WITHOUT ANY WARRANTY; without even the implied warranty of
-#	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 #	GNU General Public License for more details.
 #
 #	You should have received a copy of the GNU General Public License along
@@ -21,15 +21,16 @@
 #	51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-EE_CFLAGS += -Wall -Os -I. -I../include -I../include/exfat
+EE_CFLAGS += -Wall -Os -I. -I../include -I../include/exfat -std=gnu11
 
 EE_LIB = libexfat.a 
 
-EE_OBJS = mount.o
+#log.o
+EE_OBJS = cluster.o io.o lookup.o mount.o node.o repair.o time.o utf.o utils.o
 
 EE: $(EE_LIB) 
-ifeq ($(PS2DEV),)
-	@echo "$PS2DEV ENVIROMENT is not set. Could not install libexfat."
+ifeq ($(PS2SDK),)
+	@echo "$PS2SDK ENVIROMENT is not set. Could not install libexfat."
 	@exit 1
 endif
 	@echo Copying...
