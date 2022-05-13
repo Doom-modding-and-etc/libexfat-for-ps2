@@ -40,14 +40,12 @@ static uint64_t rootdir_size(const struct exfat* ef)
 	{
 		if (clusters == clusters_max) /* infinite loop detected */
 		{
-			exfat_error("root directory cannot occupy all %d clusters",
-					clusters);
+			exfat_error("root directory cannot occupy all %d clusters", clusters);
 			return 0;
 		}
 		if (CLUSTER_INVALID(*ef->sb, rootdir_cluster))
 		{
-			exfat_error("bad cluster %#x while reading root directory",
-					rootdir_cluster);
+			exfat_error("bad cluster %#x while reading root directory", rootdir_cluster);
 			return 0;
 		}
 		rootdir_cluster = exfat_next_cluster(ef, ef->root, rootdir_cluster);

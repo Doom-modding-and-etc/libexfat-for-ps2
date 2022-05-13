@@ -22,11 +22,7 @@
 
 #include "exfat.h"
 #include <stdarg.h>
-#ifdef __ANDROID__
-#include <android/log.h>
-#else
-#include <syslog.h>
-#endif
+//#include <syslog.h>
 #include <unistd.h>
 
 int exfat_errors;
@@ -47,12 +43,9 @@ void exfat_bug(const char* format, ...)
 	va_end(ap);
 	fputs(".\n", stderr);
 
-#ifdef __ANDROID__
-	__android_log_vprint(ANDROID_LOG_FATAL, PACKAGE, format, aq);
-#else
 	if (!isatty(STDERR_FILENO))
 		vsyslog(LOG_CRIT, format, aq);
-#endif
+
 	va_end(aq);
 
 	abort();
@@ -75,12 +68,9 @@ void exfat_error(const char* format, ...)
 	va_end(ap);
 	fputs(".\n", stderr);
 
-#ifdef __ANDROID__
-	__android_log_vprint(ANDROID_LOG_ERROR, PACKAGE, format, aq);
-#else
 	if (!isatty(STDERR_FILENO))
 		vsyslog(LOG_ERR, format, aq);
-#endif
+
 	va_end(aq);
 }
 
@@ -101,12 +91,9 @@ void exfat_warn(const char* format, ...)
 	va_end(ap);
 	fputs(".\n", stderr);
 
-#ifdef __ANDROID__
-	__android_log_vprint(ANDROID_LOG_WARN, PACKAGE, format, aq);
-#else
 	if (!isatty(STDERR_FILENO))
 		vsyslog(LOG_WARNING, format, aq);
-#endif
+
 	va_end(aq);
 }
 
@@ -126,11 +113,8 @@ void exfat_debug(const char* format, ...)
 	va_end(ap);
 	fputs(".\n", stderr);
 
-#ifdef __ANDROID__
-	__android_log_vprint(ANDROID_LOG_DEBUG, PACKAGE, format, aq);
-#else
 	if (!isatty(STDERR_FILENO))
 		vsyslog(LOG_DEBUG, format, aq);
-#endif
+
 	va_end(aq);
 }

@@ -77,8 +77,7 @@ int exfat_cleanup_node(struct exfat* ef, struct exfat_node* node)
 	return rc;
 }
 
-static int read_entries(struct exfat* ef, struct exfat_node* dir,
-		struct exfat_entry* entries, int n, off_t offset)
+static int read_entries(struct exfat* ef, struct exfat_node* dir, struct exfat_entry* entries, int n, off_t offset)
 {
 	ssize_t size;
 
@@ -98,8 +97,7 @@ static int read_entries(struct exfat* ef, struct exfat_node* dir,
 	return -EIO;
 }
 
-static int write_entries(struct exfat* ef, struct exfat_node* dir,
-		const struct exfat_entry* entries, int n, off_t offset)
+static int write_entries(struct exfat* ef, struct exfat_node* dir, const struct exfat_entry* entries, int n, off_t offset)
 {
 	ssize_t size;
 
@@ -141,8 +139,7 @@ static void init_node_meta1(struct exfat_node* node,
 			0, meta1->atime_tzo);
 }
 
-static void init_node_meta2(struct exfat_node* node,
-		const struct exfat_entry_meta2* meta2)
+static void init_node_meta2(struct exfat_node* node, const struct exfat_entry_meta2* meta2)
 {
 	node->size = le64_to_cpu(meta2->size);
 	node->start_cluster = le32_to_cpu(meta2->start_cluster);
@@ -150,8 +147,7 @@ static void init_node_meta2(struct exfat_node* node,
 	node->is_contiguous = ((meta2->flags & EXFAT_FLAG_CONTIGUOUS) != 0);
 }
 
-static void init_node_name(struct exfat_node* node,
-		const struct exfat_entry* entries, int n)
+static void init_node_name(struct exfat_node* node, const struct exfat_entry* entries, int n)
 {
 	int i;
 
@@ -294,8 +290,8 @@ static bool check_node(const struct exfat* ef, struct exfat_node* node,
 	return ret;
 }
 
-static int parse_file_entries(struct exfat* ef, struct exfat_node* node,
-		const struct exfat_entry* entries, int n)
+static int parse_file_entries(struct exfat* ef, struct exfat_node* node, 
+const struct exfat_entry* entries, int n)
 {
 	const struct exfat_entry_meta1* meta1;
 	const struct exfat_entry_meta2* meta2;
