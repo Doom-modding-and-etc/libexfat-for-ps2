@@ -4,7 +4,7 @@
 
 	Free exFAT implementation.
 	Copyright (C) 2010-2018  Andrew Nayenko
-
+	Copyright (C) 2022 André Guilherme
 	This program is free software; you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
 	the Free Software Foundation, either version 2 of the License, or
@@ -27,9 +27,20 @@
 #include <stdint.h>
 #include <stddef.h>
 
-typedef struct { uint16_t __u16; } le16_t;
-typedef struct { uint32_t __u32; } le32_t;
-typedef struct { uint64_t __u64; } le64_t;
+typedef struct 
+{ 
+	uint16_t __u16; 
+} le16_t;
+
+typedef struct 
+{ 
+	uint32_t __u32; 
+} le32_t;
+
+typedef struct 
+{ 
+	uint64_t __u64; 
+} le64_t;
 
 #if EXFAT_BYTE_ORDER == EXFAT_LITTLE_ENDIAN
 

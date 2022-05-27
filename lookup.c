@@ -25,11 +25,9 @@
 #include <errno.h>
 #include <inttypes.h>
 
-int exfat_opendir(struct exfat* ef, struct exfat_node* dir,
-		struct exfat_iterator* it)
+int exfat_opendir(struct exfat* ef, struct exfat_node* dir, struct exfat_iterator* it)
 {
 	int rc;
-
 	exfat_get_node(dir);
 	it->parent = dir;
 	it->current = NULL;

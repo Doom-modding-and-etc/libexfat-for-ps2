@@ -4,6 +4,7 @@
 
 	Free exFAT implementation.
 	Copyright (C) 2010-2018  Andrew Nayenko
+	Copyright (C) 2022 André Guilherme
 
 	This program is free software; you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
@@ -22,10 +23,22 @@
 
 #include "exfat.h"
 #include <stdarg.h>
-//#include <syslog.h>
 #include <unistd.h>
 
 int exfat_errors;
+
+//log taken from sys/log.h
+enum LOG
+{
+ USELESS = 0,	// system is unusable 
+ ALERT = 1,	// action must be taken immediately 
+ CRIT = 2, 	// critical conditions 
+ ERR = 3,	// error conditions 
+ WARNING = 4,	// warning conditions 
+ NOTICE = 5,	// normal but significant condition 
+ INFO =	6,	// informational 
+ DEBUG = 7,	// debug-level messages 
+};
 
 /*
  * This message means an internal bug in exFAT implementation.
@@ -44,8 +57,9 @@ void exfat_bug(const char* format, ...)
 	fputs(".\n", stderr);
 
 	if (!isatty(STDERR_FILENO))
-		vsyslog(LOG_CRIT, format, aq);
-
+	{
+		printf(CRIT, format, aq, "");
+	}
 	va_end(aq);
 
 	abort();
@@ -69,8 +83,7 @@ void exfat_error(const char* format, ...)
 	fputs(".\n", stderr);
 
 	if (!isatty(STDERR_FILENO))
-		vsyslog(LOG_ERR, format, aq);
-
+		printf(ERR, format, aq, "");
 	va_end(aq);
 }
 
@@ -92,8 +105,8 @@ void exfat_warn(const char* format, ...)
 	fputs(".\n", stderr);
 
 	if (!isatty(STDERR_FILENO))
-		vsyslog(LOG_WARNING, format, aq);
-
+		//vsyslog(LOG_WARNING, format, aq);
+    printf(WARNING, format, aq, "");
 	va_end(aq);
 }
 
@@ -114,7 +127,7 @@ void exfat_debug(const char* format, ...)
 	fputs(".\n", stderr);
 
 	if (!isatty(STDERR_FILENO))
-		vsyslog(LOG_DEBUG, format, aq);
-
+		//vsyslog(LOG_DEBUG, format, aq);
+	printf(DEBUG, format, aq, "");
 	va_end(aq);
 }

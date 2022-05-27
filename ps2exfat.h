@@ -1,10 +1,10 @@
 /*
-	exfat.h (14.12.21)
+	ps2exfat.h(14.12.21)
 	Definitions of structures and constants used in BDM exFAT file system
 	implementation.
 
 	Free exFAT implementation for sony Plastation 2.
-    CopyRight (C) 2021-2022 André Guilherme Mendes Da Luz Bastos
+    CopyRight (C) 2021-2022 André Guilherme
 
 	This program is free software; you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
@@ -24,7 +24,7 @@
 #include <stdbool.h>
 #include <sys/stat.h>
 #include <stdio.h>
-
+#include <dirent.h>
 //Normal definitions 
 #define EXFAT_NAME_MAX 255 
 #define MBR 0X07
@@ -43,22 +43,11 @@ typedef enum
 	USB = 0X000000012
 } BDM_DISC_INTERFACE;
 
-//types 
-typedef unsigned int mount_t;
-typedef unsigned char name_t;
-typedef unsigned int ummount_t;
-typedef double clusters_t;
-typedef unsigned int dir_t;
-typedef unsigned short list_t;
-typedef long init_t;
-typedef unsigned int cache_t; 
+void bdm_init_exfat();
+int bdm_exfat_dir_list(const char *dir);
+bool mkdir_bdm_exfat(const char *dir, BDM_DISC_INTERFACE *device);
+void bdm_exfat_get_fragmentation(const BDM_DISC_INTERFACE *device);
 
-void bdm_init_exfat_partition(name_t *partition_name, init_t *partition, clusters_t *cluster, BDM_DISC_INTERFACE);
-int bdm_exfat_dir_list(list_t *list, dir_t *dir);
-bool mkdir_bdm_exfat_partition_mount(mount_t *partition, dir_t *dir);
-void bdm_exfat_get_fragmentation(const BDM_DISC_INTERFACE *fragmentation);
-void bdm_exfat_ignore_fragmentation(const bool fragmentation);
-bool ummount_bdm_exfat(ummount_t *ummount, clusters_t *clusters_off);
-
-
-
+#ifdef PURE_WIP
+bool ummount_bdm_exfat(bool *ummount, const BDM_DISC_INTERFACE *device);
+#endif

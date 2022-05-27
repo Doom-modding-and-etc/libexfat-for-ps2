@@ -4,8 +4,9 @@
 #   Automake source.
 #
 #	Free exFAT implementation.
-#	Copyright (C) 2010-2018  Andrew Nayenko
+#	Copyright (C) 2010-2018 Andrew Nayenko
 #   Copyright (C) 2021-2022 André Guilherme
+#
 #	This program is free software; you can redistribute it and/or modify
 #	it under the terms of the GNU General Public License as published by
 #	the Free Software Foundation, either version 2 of the License, or
@@ -21,27 +22,24 @@
 #	51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-EE_CFLAGS += -Wall -Os -I. -I../include -I../include/exfat -std=gnu11
+EE_CFLAGS += -Wall -Os -I. -I../include -I../include/exfat -std=gnu99
 
 EE_LIB = libexfat.a 
 
-#log.o
-EE_OBJS = cluster.o io.o lookup.o mount.o node.o repair.o time.o utf.o utils.o
+EE_OBJS = cluster.o io.o lookup.o log.o mount.o node.o exfat.o repair.o time.o utf.o utils.o
 
-EE: $(EE_LIB) 
+all: $(EE_LIB) 
 ifeq ($(PS2SDK),)
 	@echo "$PS2SDK ENVIROMENT is not set. Could not install libexfat."
 	@exit 1
 endif
 	@echo Copying...
-	@cp -frv include/exfat.h $(PS2SDK)/ee/include
+	@cp -frv ps2exfat.h $(PS2SDK)/ee/include
 	@cp -f $(EE_LIB) $(PS2SDK)/ee/lib
 	@echo Done!
 
-clean:
+clear:
 	@rm -f -r $(EE_LIB) $(EE_OBJS) 
-
-install: EE clean
 
 include $(PS2SDK)/Defs.make
 include $(PS2SDK)/samples/Makefile.pref

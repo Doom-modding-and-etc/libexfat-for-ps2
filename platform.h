@@ -6,6 +6,7 @@
 	Free exFAT implementation.
 	Copyright (C) 2010-2018  Andrew Nayenko
 	Copyright (C) 2021-2022 André Guilherme
+	
 	This program is free software; you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
 	the Free Software Foundation, either version 2 of the License, or
@@ -66,8 +67,6 @@
 #define EXFAT_LITTLE_ENDIAN __LITTLE_ENDIAN
 #define EXFAT_BIG_ENDIAN __BIG_ENDIAN
 
-//#else 
-//#error Unknown platform
 #endif
 
 #endif /* ifndef PLATFORM_H_INCLUDED */
